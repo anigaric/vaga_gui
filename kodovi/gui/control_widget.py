@@ -55,8 +55,8 @@ class ControlWidget(QWidget):
         self.stopButton.setEnabled(True)
         print("Mjerenje pokrenuto")
         self.parent.measureData()              #todo dodat varijablu mjerenjeUToku u glavnom programu koja ce citat, pa prema tome postavljat gumbove
-        self.startButton.setEnabled(True)
-        self.stopButton.setDisabled(True)
+        # self.startButton.setEnabled(True)     # todo handlano preko do_after_finish_measure funkcije u vaga_gui
+        # self.stopButton.setDisabled(True)
 
     def stopFunc(self):
         self.stopButton.setDisabled(True)

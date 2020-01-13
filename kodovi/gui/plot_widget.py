@@ -50,7 +50,7 @@ class PlotWidget(QWidget):  # or QWidget ??? or QDialog as it was default
         self.ax.grid(True)
 
         self.ax.set_xlim(max(0, self.i-30), max(30, self.i + 1))
-        self.ax.set_ylim(0, 150)
+        self.ax.set_ylim(0, 255)            #todo vratit u 150 kg kad dobijem podatke o masi
 
         self.ax.set_xlabel('Uzorak', fontsize='large')
         self.ax.set_ylabel('Vrijednost', fontsize='large')

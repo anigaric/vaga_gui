@@ -25,13 +25,14 @@ if __name__ == "__main__":
 
     try:
         while True:
-            print(int.from_bytes(ser.read(), "little", signed=True))
-            print(int.from_bytes(ser.read(), "little", signed=True))
+            incoming_byte = ser.read()
+            print(int.from_bytes(incoming_byte, "little", signed=True))
+            incoming_byte = ser.read()
+            print(int.from_bytes(incoming_byte, "little", signed=True))
 
             incoming_byte = ser.read()
             incoming_int = int.from_bytes(incoming_byte, "little", signed=True)
-            print(incoming_hex)
-            print(type(incoming_hex))
+            print(incoming_byte)
 
             incoming_hex = ser.read().hex()
             print(incoming_hex)

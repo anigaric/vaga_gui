@@ -59,6 +59,7 @@ class VagaWindow(QMainWindow):                  # klasa nasljeduje QMainWindow
     def measureData(self):
         worker = Worker(self.PortWidget.ser)
         worker.signals.result.connect(self.print_result)
+        worker.signals.finished.connect(self.do_after_finish_measure)
 
         self.threadpool.start(worker)
 
@@ -66,6 +67,12 @@ class VagaWindow(QMainWindow):                  # klasa nasljeduje QMainWindow
         self.data.measurement.append(res)
         self.PlotWidget.animate(self.data.measurement[-1]["CycleID"])
         print(res)
+
+    def do_after_finish_measure(self):
+        print("Gotovo cijelo mjerenje od 30 sek")
+        self.ControlWidget.startButton.setEnabled(True)
+        self.ControlWidget.stopButton.setDisabled(True)
+        self.ControlWidget.storeButton.setEnabled(True)
 
 
 if __name__ == '__main__':

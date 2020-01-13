@@ -3,6 +3,7 @@ import time
 
 class WorkerSignals(QObject):
     result = pyqtSignal(object)
+    finished = pyqtSignal()
 
 
 class Worker(QRunnable):
@@ -26,7 +27,7 @@ class Worker(QRunnable):
         elapsed_time = 0
         while elapsed_time < 30:  # mjerenje(citanje podataka) traje 30 sekundi            #todo vratit na 30 sek
             incoming_hex = self.ser.read().hex()
-            print(incoming_hex)
+            # print(incoming_hex)
 
             header.append(incoming_hex)
             if len(header) >= 4:
@@ -73,4 +74,6 @@ class Worker(QRunnable):
                 #print("ciscenjeeeeeeeeeeeeee")
 
             elapsed_time = time.time() - start_time
+
+        self.signals.finished.emit()
 
