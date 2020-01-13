@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import *
 from serial.tools import list_ports
+import serial
 
 class PortWidget(QWidget):
     def __init__(self, parent=None):
@@ -29,3 +30,9 @@ class PortWidget(QWidget):
     def selectedPort(self):
         self.parent.selected_port = self.portComboBox.currentText()
         print(self.parent.selected_port)
+
+        try:
+            self.ser = serial.Serial(self.parent.selected_port, 115200, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE)
+        except (OSError, serial.SerialException):
+            print("Port nedostupan")
+

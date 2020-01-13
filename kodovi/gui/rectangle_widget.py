@@ -4,7 +4,6 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 import matplotlib
 matplotlib.rcParams['toolbar'] = 'None'
-from PyQt5 import QtCore
 
 class RectangleWidget(QWidget):
 
@@ -37,6 +36,7 @@ class RectangleWidget(QWidget):
         self.ax1.axis('off')
         self.ax1.set_xlim(-1, 8)
         self.ax1.set_ylim(-1, 5)
+        self.ax1.set_aspect('equal')
 
         self.canvas.draw()
 
@@ -51,6 +51,7 @@ class RectangleWidget(QWidget):
 
     def update_rectangle(self):
         self.ax1.clear()
+        self.ax1.set_aspect('equal')
         ts = self.ax1.transData
         coords = [1, 2]  # tocka oko koje se rotira pravokutnik (centar)
         tr = matplotlib.transforms.Affine2D().rotate_deg_around(coords[0], coords[1], self.angle_l)

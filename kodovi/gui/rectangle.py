@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import matplotlib
-matplotlib.rcParams['toolbar'] = 'None'
+# matplotlib.rcParams['toolbar'] = 'None'
 
 f, (ax1) = plt.subplots(1,1,figsize=(2,2))
 f.subplots_adjust(hspace=0,wspace=0)

@@ -55,8 +55,7 @@ class ControlWidget(QWidget):
         self.startButton.setDisabled(True)
         self.stopButton.setEnabled(True)
         print("Mjerenje pokrenuto")
-        QtTest.QTest.qWait(5000)                #todo dodat varijablu mjerenjeUToku u glavnom programu koja ce citat, pa prema tome postavljat gumbove
-        print("Smece")
+        self.parent.measureData()              #todo dodat varijablu mjerenjeUToku u glavnom programu koja ce citat, pa prema tome postavljat gumbove
         self.startButton.setEnabled(True)
         self.stopButton.setDisabled(True)
 
