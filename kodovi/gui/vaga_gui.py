@@ -2,12 +2,11 @@ from PyQt5 import QtWidgets
 from PyQt5.QtCore import QThreadPool
 from PyQt5.QtWidgets import *
 import sys
-import time
-import serial
 from port_widget import PortWidget
 from control_widget import ControlWidget
 from plot_widget import PlotWidget
 from rectangle_widget import RectangleWidget
+from statistics_widget import StatisticsWidget
 from worker import Worker
 from DataClasses import MeasurementData
 
@@ -34,6 +33,7 @@ class VagaWindow(QMainWindow):                  # klasa nasljeduje QMainWindow
         self.ControlWidget = ControlWidget(self)
         self.PlotWidget = PlotWidget(self)
         self.RectangleWidget = RectangleWidget(self)
+        self.StatisticsWidget = StatisticsWidget(self)
 
 
         # ****** Create central layout and add widgets to it ****** #
@@ -48,6 +48,7 @@ class VagaWindow(QMainWindow):                  # klasa nasljeduje QMainWindow
         centralLayout.addWidget(self.ControlWidget, 0, 1)
         centralLayout.addWidget(self.PlotWidget, 1, 1)
         centralLayout.addWidget(self.RectangleWidget, 1, 0)
+        centralLayout.addWidget(self.StatisticsWidget, 1, 2)
 
         # *********** Window properties ************ #
         self.centralwidget.setLayout(centralLayout)

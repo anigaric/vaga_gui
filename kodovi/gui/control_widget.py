@@ -1,6 +1,5 @@
 import sys
 import time
-from PyQt5 import QtTest
 from PyQt5.QtWidgets import *
 
 class ControlWidget(QWidget):
