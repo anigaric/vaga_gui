@@ -11,12 +11,13 @@ if __name__ == "__main__":
     legs = ['L1', 'R1', 'L2', 'R2', 'L3', 'R3', 'L4', 'R4', 'L5', 'R5', 'L6', 'R6', 'L7', 'R7', 'L8', 'R8', 'L9', 'R9',
             'L10', 'R10']
 
-    ports = serial.tools.list_ports.comports(include_links=False)  # spremanje dostupnih portova u listu
-    print("Dostupni COM portovi su: ")
-    for port in ports:
-        print(port.device)
-
-    selected_port = input("Unesite ime porta: ")
+    # ports = serial.tools.list_ports.comports(include_links=False)  # spremanje dostupnih portova u listu
+    # print("Dostupni COM portovi su: ")
+    # for port in ports:
+    #     print(port.device)
+    #
+    # selected_port = input("Unesite ime porta: ")
+    selected_port = 'COM7'
     try:
         ser = serial.Serial(selected_port, 115200, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE,
                             stopbits=serial.STOPBITS_ONE)
@@ -25,10 +26,12 @@ if __name__ == "__main__":
         print("------------------- Odabrani serijski port trenutno zauzet! ------------------")
 
     try:
-        file = open("reference_check.txt", "w")
+        ser.reset_input_buffer()
+        file = open("weight_check.txt", "a+")
+        file.write("Probno mjerenje Vaga 0.02 sek -> 5kg left 5kg right, x angles, ploce 40 cm\n")
         start_time = time.time()
         elapsed_time = 0
-        while elapsed_time < 5:                # mjerenje(citanje podataka) traje 30 sekundi #todo vrati na 30
+        while elapsed_time < 0.02:                # mjerenje(citanje podataka) traje 30 sekundi #todo vrati na 30
             incoming_hex = ser.read().hex()
             # print(incoming_hex)
 
@@ -82,8 +85,7 @@ if __name__ == "__main__":
                 file.write(str(package_hex))
                 file.write("\n")
                 file.write(str(package))
-                file.write("\n")
-                file.write("\n")
+                file.write("\n\n")
 
 
                 start = 0
@@ -91,7 +93,7 @@ if __name__ == "__main__":
                 # print("ciscenjeeeeeeeeeeeeee")
 
             elapsed_time = time.time() - start_time
-
+        file.write("\n\n")
         file.close()
 
     except NameError:

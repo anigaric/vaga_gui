@@ -24,22 +24,22 @@ class StatisticsWidget(QWidget):
 
         self.statDataLeftLabel = QLabel()
         self.statDataLeftLabel.setText("       Aritm. sredina =  0  kg"
-                                       "\n  Stand. devijacija =  0  kg"
-                                       "\n                Max =  0  kg"
-                                       "\n                Min =  0  kg")
+                                       "\n\n  Stand. devijacija =  0  kg"
+                                       "\n\n                Max =  0  kg"
+                                       "\n\n                Min =  0  kg")
         self.statDataLeftLabel.setAlignment(Qt.AlignRight)
 
         self.statDataRightLabel = QLabel()
         self.statDataRightLabel.setText("       Aritm. sredina =  0  kg"
-                                        "\n  Stand. devijacija =  0  kg"
-                                        "\n                Max =  0  kg"
-                                        "\n                Min =  0  kg")
+                                        "\n\n  Stand. devijacija =  0  kg"
+                                        "\n\n                Max =  0  kg"
+                                        "\n\n                Min =  0  kg")
         self.statDataRightLabel.setAlignment(Qt.AlignRight)
 
         self.statDataBothLabel = QLabel()
-        self.statDataBothLabel.setText("mL : mR = 50 % : 50 %"
-                                       "\nRazlika = 0 %"
-                                       "\nmL + mR = 0 kg")
+        self.statDataBothLabel.setText("\nmL : mR = 50 % : 50 %"
+                                       "\n\nRazlika = 0 %"
+                                       "\n\nmL + mR = 0 kg")
         self.statDataBothLabel.setAlignment(Qt.AlignCenter)
 
 
@@ -49,8 +49,8 @@ class StatisticsWidget(QWidget):
         layout.setColumnStretch(1, 1)
         layout.setRowStretch(0, 1)
         layout.setRowStretch(1, 1)
-        layout.setRowStretch(2, 1)
-        layout.setRowStretch(3, 1)
+        layout.setRowStretch(2, 3)                  #todo zamijenit 3 sa necim drugim?
+        layout.setRowStretch(3, 3)
 
         layout.addWidget(self.statisticsLabel, 0, 0, 1, 2)
         layout.addWidget(self.mLeftLabel, 1, 0)

@@ -42,7 +42,7 @@ class VagaWindow(QMainWindow):                  # klasa nasljeduje QMainWindow
         centralLayout.setColumnStretch(1, 3)
         centralLayout.setColumnStretch(2, 2)
         centralLayout.setRowStretch(0, 1)
-        centralLayout.setRowStretch(1, 2)
+        centralLayout.setRowStretch(1, 5)           #todo vratit sa 5 na 2
 
         centralLayout.addWidget(self.PortWidget, 0, 0)
         centralLayout.addWidget(self.ControlWidget, 0, 1)
@@ -53,7 +53,7 @@ class VagaWindow(QMainWindow):                  # klasa nasljeduje QMainWindow
         # *********** Window properties ************ #
         self.centralwidget.setLayout(centralLayout)
         self.setCentralWidget(self.centralwidget)
-        self.setGeometry(200, 100, 800, 500)
+        self.setGeometry(200, 100, 900, 500)           #todo maybe vratit sirinu na 1000
         self.setWindowTitle("Biomehanička vaga")
 
     def measureData(self):

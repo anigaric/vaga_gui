@@ -30,6 +30,8 @@ class PlotWidget(QWidget):  # or QWidget ??? or QDialog as it was default
     def setup(self):
         self.ax = self.fig.add_subplot(111)  # create an axis
         self.xs = []
+        self.ax.set_xlim(0, 30)
+        self.ax.set_ylim(0, 150)            #todo ta potrebe testiranja staviti 255
         self.ys = []
         self.i = 0
 
@@ -50,7 +52,7 @@ class PlotWidget(QWidget):  # or QWidget ??? or QDialog as it was default
         self.ax.grid(True)
 
         self.ax.set_xlim(max(0, self.i-30), max(30, self.i + 1))
-        self.ax.set_ylim(0, 255)            #todo vratit u 150 kg kad dobijem podatke o masi
+        self.ax.set_ylim(0, 150)            #todo vratit u 150 kg kad dobijem podatke o masi, potrebe testiranja 255
 
         self.ax.set_xlabel('Uzorak', fontsize='large')
         self.ax.set_ylabel('Vrijednost', fontsize='large')
