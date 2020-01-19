@@ -60,6 +60,7 @@ class ControlWidget(QWidget):
 
     def stopFunc(self):
         self.stopButton.setDisabled(True)
+        self.parent.worker.force_stop = True
         print("Mjerenje zaustavljeno")
         self.startButton.setEnabled(True)
         self.storeButton.setEnabled(True)

@@ -57,11 +57,11 @@ class VagaWindow(QMainWindow):                  # klasa nasljeduje QMainWindow
         self.setWindowTitle("Biomehanička vaga")
 
     def measureData(self):
-        worker = Worker(self.PortWidget.ser)
-        worker.signals.result.connect(self.print_result)
-        worker.signals.finished.connect(self.do_after_finish_measure)
+        self.worker = Worker(self.PortWidget.ser)
+        self.worker.signals.result.connect(self.print_result)
+        self.worker.signals.finished.connect(self.do_after_finish_measure)
 
-        self.threadpool.start(worker)
+        self.threadpool.start(self.worker)
 
     def print_result(self, res):
         self.data.measurement.append(res)

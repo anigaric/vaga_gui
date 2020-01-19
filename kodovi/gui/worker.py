@@ -12,6 +12,7 @@ class Worker(QRunnable):
         self.ser = ser
         self.signals = WorkerSignals()
         print("Init worker done")
+        self.force_stop = False
 
     @pyqtSlot()
     def run(self):
@@ -25,7 +26,7 @@ class Worker(QRunnable):
         print("Run started")
         start_time = time.time()
         elapsed_time = 0
-        while elapsed_time < 30:  # mjerenje(citanje podataka) traje 30 sekundi            #todo vratit na 30 sek
+        while elapsed_time < 30 and self.force_stop is False:     # mjerenje(citanje podataka) traje 30 sekundi            #todo vratit na 30 sek
             incoming_hex = self.ser.read().hex()
             # print(incoming_hex)
 
