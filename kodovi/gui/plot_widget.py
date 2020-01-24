@@ -1,5 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5 import QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 import matplotlib.pyplot as plt
@@ -7,7 +9,7 @@ import datetime as dt
 from matplotlib import animation
 from matplotlib.figure import Figure
 
-class PlotWidget(QWidget):  # or QWidget ??? or QDialog as it was default
+class PlotWidget(QtWidgets.QWidget):  # or QtWidgets.QWidget ??? or QDialog as it was default
 
     def __init__(self, parent=None):
         super().__init__(parent)  # preko parenta pristupam atributima i metodama od VagaWindow
@@ -20,7 +22,7 @@ class PlotWidget(QWidget):  # or QWidget ??? or QDialog as it was default
 
 
         # set the layout
-        layout = QVBoxLayout()
+        layout = QtWidgets.QVBoxLayout()
         layout.addWidget(self.toolbar)
         layout.addWidget(self.canvas)
         self.setLayout(layout)
@@ -63,7 +65,7 @@ class PlotWidget(QWidget):  # or QWidget ??? or QDialog as it was default
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     win = PlotWidget()
     win.show()              # prikazuje prozor
     sys.exit(app.exec_())   # zatvara kad stisnemo x gumb

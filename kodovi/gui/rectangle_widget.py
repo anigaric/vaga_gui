@@ -1,11 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5 import QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 import matplotlib
 matplotlib.rcParams['toolbar'] = 'None'
 
-class RectangleWidget(QWidget):
+class RectangleWidget(QtWidgets.QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)  # preko parenta pristupam atributima i metodama od VagaWindow
@@ -16,7 +18,7 @@ class RectangleWidget(QWidget):
         self.canvas = FigureCanvas(self.fig)
 
         # ****** Create layout and add widgets to it ****** #
-        layout = QVBoxLayout()
+        layout = QtWidgets.QVBoxLayout()
         layout.addWidget(self.canvas)
         self.setLayout(layout)
 
@@ -82,7 +84,7 @@ class RectangleWidget(QWidget):
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     win = RectangleWidget()
     win.show()  # prikazuje prozor
 

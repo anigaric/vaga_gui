@@ -1,18 +1,20 @@
-from PyQt5.QtWidgets import *
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from PyQt5 import QtWidgets
 from serial.tools import list_ports
 import serial
 
-class PortWidget(QWidget):
+class PortWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)            #preko parenta pristupam atributima i metodama od VagaWindow
         self.parent = parent
 
         # ******* Create widgets ******* #
-        self.portLabel = QLabel()
+        self.portLabel = QtWidgets.QLabel()
         self.portLabel.setObjectName("portLabel")
         self.portLabel.setText("Odaberi port: ")
 
-        self.portComboBox = QComboBox()
+        self.portComboBox = QtWidgets.QComboBox()
         self.portComboBox.setObjectName("portComboBox")
         ports = list_ports.comports(include_links=False)
         for port in ports:
@@ -20,7 +22,7 @@ class PortWidget(QWidget):
         self.portComboBox.activated.connect(self.selectedPort)
 
         # ****** Create layout and add widgets to it ****** #
-        layout = QHBoxLayout(self)
+        layout = QtWidgets.QHBoxLayout(self)
         layout.addWidget(self.portLabel)
         layout.addWidget(self.portComboBox)
 

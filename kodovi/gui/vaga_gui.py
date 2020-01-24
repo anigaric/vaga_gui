@@ -1,6 +1,6 @@
-from PyQt5 import QtWidgets
-from PyQt5.QtCore import QThreadPool
-from PyQt5.QtWidgets import *
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from PyQt5 import QtWidgets, QtCore
 import sys
 from port_widget import PortWidget
 from control_widget import ControlWidget
@@ -11,14 +11,14 @@ from worker import Worker
 from DataClasses import MeasurementData
 
 
-class VagaWindow(QMainWindow):                  # klasa nasljeduje QMainWindow
+class VagaWindow(QtWidgets.QMainWindow):                  # klasa nasljeduje QMainWindow
     def __init__(self):                         # inicijalizacija klase
         super().__init__()
 
         # ******* Define class atributes ****** #
         self.selected_port = None
         self.data = MeasurementData()                          # apsolutno svi podaci, polje dictionaryja
-        self.threadpool = QThreadPool()
+        self.threadpool = QtCore.QThreadPool()
 
         self.initUI()
 
@@ -37,7 +37,7 @@ class VagaWindow(QMainWindow):                  # klasa nasljeduje QMainWindow
 
 
         # ****** Create central layout and add widgets to it ****** #
-        centralLayout = QGridLayout()
+        centralLayout = QtWidgets.QGridLayout()
         centralLayout.setColumnStretch(0, 1)
         centralLayout.setColumnStretch(1, 3)
         centralLayout.setColumnStretch(2, 2)
@@ -76,7 +76,7 @@ class VagaWindow(QMainWindow):                  # klasa nasljeduje QMainWindow
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     win = VagaWindow()
     win.show()             # prikazuje prozor
     sys.exit(app.exec_())  # zatvara kad stisnemo x gumb

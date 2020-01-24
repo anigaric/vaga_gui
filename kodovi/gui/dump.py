@@ -1,20 +1,20 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from PyQt5 import QtWidgets, QtCore, uic
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
-import sys  # We need sys so that we can pass argv to QApplication
+import sys  # We need sys so that we can pass argv to QtWidgets.QApplication
 import os
 from random import randint
-from PyQt5 import QtTest
-from PyQt5.QtWidgets import *
 
-class GraphWidget(QWidget):
+class GraphWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)            #preko parenta pristupam atributima i metodama od VagaWindow
         self.parent = parent
 
         self.graphWidget = pg.PlotWidget()
 
-        layout = QHBoxLayout(self)
+        layout = QtWidgets.QHBoxLayout(self)
         layout.addWidget(self.graphWidget)
         self.setLayout(layout)
 
@@ -61,7 +61,7 @@ class GraphWidget(QWidget):
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     win = GraphWidget()
     win.show()  # prikazuje prozor
     sys.exit(app.exec_())  # zatvara kad stisnemo x gumb
